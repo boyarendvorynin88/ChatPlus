@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatPlus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div id="authScreen" class="auth-container">
+        <div class="auth-box">
+            <h1 class="logo-title">ChatPlus</h1>
+            <p class="auth-subtitle">Добро пожаловать</p>
+            <input id="authLogin" type="text" placeholder="Логин">
+            <input id="authPass" type="password" placeholder="Пароль">
+            <button id="btnLogin" class="btn-primary">Войти</button>
+            <button id="btnGoReg" class="btn-secondary">Создать аккаунт</button>
+            <button id="btnReg" class="btn-primary" style="display:none">Регистрация</button>
+            <button id="btnGoLogin" class="btn-secondary" style="display:none">Назад</button>
+            <p id="authError" class="error-msg"></p>
+        </div>
+    </div>
+
+    <div id="appScreen" style="display:none">
+        
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img id="myAvatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" class="avatar">
+                <div class="user-info">
+                    <div id="myName" class="user-name"></div>
+                    <select id="myStatus" class="status-select">
+                        <option value="online">Онлайн</option>
+                        <option value="away">Не на месте</option>
+                        <option value="busy">Занят</option>
+                        <option value="offline">Оффлайн</option>
+                    </select>
+                </div>
+                <button id="btnEditProfile" class="btn-icon">⚙️</button>
+                <button id="btnLogout" class="btn-icon">✖</button>
+            </div>
+            
+            <div class="sidebar-tabs">
+                <button class="stab active" data-tab="chats">Чаты</button>
+                <button class="stab" data-tab="contacts">Контакты</button>
+                <button class="stab" data-tab="groups">Группы</button>
+                <button class="stab" data-tab="black">Блок</button>
+            </div>
+            
+            <div class="search-bar">
+                <input id="searchInput" type="text" placeholder="Поиск...">
+            </div>
+            
+            <div id="tabChats" class="tab-panel">
+                <div id="chatList"></div>
+            </div>
+            
+            <div id="tabContacts" class="tab-panel" style="display:none">
+                <div class="add-row">
+                    <input id="newContact" type="text" placeholder="Имя пользователя...">
+                    <button id="btnAddContact" class="btn-add">+</button>
+                </div>
+                <div id="contactList"></div>
+            </div>
+            
+            <div id="tabGroups" class="tab-panel" style="display:none">
+                <div class="add-row">
+                    <input id="newGroup" type="text" placeholder="Имя группы...">
+                    <button id="btnCreateGroup" class="btn-add">+</button>
+                </div>
+                <div id="groupList"></div>
+            </div>
+            
+            <div id="tabBlack" class="tab-panel" style="display:none">
+                <div id="blackList"></div>
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <div id="noChatSelected" class="empty-chat">
+                <div class="no-chat-msg">Выберите чат для начала общения...</div>
+            </div>
+            
+            <div id="chatWindow" class="active-chat" style="display:none">
+                <div class="chat-header">
+                    <img id="chatAvatar" src="" class="avatar">
+                    <div class="chat-title-info">
+                        <div id="chatName" class="chat-name"></div>
+                        <div id="chatAbout" class="chat-status"></div>
+                    </div>
+                    <div class="chat-actions">
+                        <button id="btnBlock" class="btn-danger">Заблокировать</button>
+                        <button id="btnDeleteChat" class="btn-danger">Очистить</button>
+                    </div>
+                </div>
+                
+                <div id="messages" class="messages-container"></div>
+                
+                <div class="message-input-area">
+                    <button id="btnEmoji" class="btn-icon">😊</button>
+                    <div id="emojiPicker" class="emoji-picker" style="display:none">
+                        <span>😀</span><span>😂</span><span>😍</span><span>🤔</span><span>😎</span><span>👍</span><span>❤️</span><span>🔥</span>
+                        <span>😢</span><span>😡</span><span>🎉</span><span>✨</span><span>😱</span>
+                    </div>
+                    <input id="msgInput" type="text" placeholder="Напишите сообщение...">
+                    <label class="file-btn">
+                        📎
+                        <input id="fileInput" type="file" style="display:none">
+                    </label>
+                    <button id="btnSend" class="btn-send">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profileModal" class="modal" style="display:none">
+        <div class="modal-content">
+            <h2>Редактировать профиль</h2>
+            <input id="profNickname" type="text" placeholder="Никнейм">
+            <input id="profAbout" type="text" placeholder="О себе">
+            <input id="profAvatar" type="text" placeholder="Ссылка на фото (URL)">
+            <div class="modal-actions">
+                <button id="btnSaveProfile" class="btn-primary">Сохранить</button>
+                <button id="btnCloseProfile" class="btn-secondary">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
